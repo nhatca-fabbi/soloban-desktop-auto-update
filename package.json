@@ -1,0 +1,32 @@
+{
+  "name": "soloban-closed-beta",
+  "description": "Soloban Closed-Beta | Build your dashboard within 3 minutes",
+  "author": "Apollo, inc.",
+  "version": "0.3.0",
+  "main": "main/index.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "build-ts": "tsc",
+    "dev": "yarn build-ts && electron .",
+    "build": "yarn build-ts && electron-builder --windows --mac --publish never",
+    "deploy": "yarn build-ts && electron-builder --windows --mac --publish onTagOrDraft",
+    "clean": "rimraf dist main out"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "electron-is-dev": "^2.0.0",
+    "electron-notarize": "^1.1.1",
+    "electron-updater": "^4.3.9",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "electron": "^15.0.0",
+    "electron-builder": "^22.11.7",
+    "typescript": "^4.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apolloinc-dev/soloban.git"
+  }
+}

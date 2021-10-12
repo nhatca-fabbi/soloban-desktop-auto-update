@@ -1,0 +1,37 @@
+appId: com.soloban.try
+directories:
+  buildResources: public
+productName: "Soloban Closed-beta TRIAL"
+protocols:
+  - name: solobanapp
+    schemes:
+      - solobanapp
+afterSign: notarize/notarize.js
+mac:
+  icon: public/icon.icns
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    NSMicrophoneUsageDescription: "We need access to your microphone so people you talk to in a Grape Call can hear you."
+    NSCameraUsageDescription: "Allow your conversational partners to see you in a Grape Call. You can turn off your video anytime during a call."
+win:
+  target: nsis
+  icon: public/icon.ico
+  certificateFile: private/apple-cert-for-win.p12
+  verifyUpdateCodeSignature: false
+nsis:
+  installerIcon: public/icon.ico
+  installerHeaderIcon: public/icon.ico
+  deleteAppDataOnUninstall: true
+files:
+  - main
+  - public/icon.*
+dmg:
+  sign: false
+publish:
+  provider: github
+  private: true
+  repo: soloban
+  token: '${env.GH_TOKEN}'
